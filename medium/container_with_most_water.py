@@ -34,3 +34,10 @@ class Solution:
 # The problem can be solved using a two-pointer approach. We start with two pointers, one at the beginning (left) and one at the end (right) of the height array. We calculate the area formed by the lines at these two pointers and update the maximum area found so far.
 # We then move the pointer pointing to the shorter line inward, as moving the longer line inward cannot increase the area. We repeat this process until the two pointers meet.
 
+
+
+
+# We use a two-pointer approach. One pointer starts at the left end and the other at the right end of the array.
+# At each step, we calculate the area using the distance between the pointers as the width and the minimum of the two heights as the limiting height.
+# We keep track of the maximum area seen so far.
+# Then, we move the pointer with the smaller height inward, because the shorter line limits the water and moving the taller one cannot increase the area.
