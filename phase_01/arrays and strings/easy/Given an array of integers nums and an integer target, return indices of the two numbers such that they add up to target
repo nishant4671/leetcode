@@ -1,0 +1,41 @@
+# Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+# You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+# You can return the answer in any order.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Solution: #this is class definition 
+    def twoSum(self, nums, target):#this is function definition , this tells that function takes two parameters nums and target , nums is an array of integers and target is a single integer 
+        seen = {} # this is an empty dictionary to store the numbers we have seen sdo far along with the index , this will help us to check if the needed number to reach the target 
+        #example of how seen dictionary stores values : {num1:index1, num2:index2}
+        for i in range(len(nums)):#this loop iterates through each index of the nums array 
+            num = nums[i] #we are here creating a variable num to store the current number at the index i 
+            needed = target - num #here we made a variable called needed to store the value we need to find in the seen dictionary to reach the target sum, 
+            
+            if needed in seen:#this chekcs if the needed number is already in the seen dictionary , if it is present in seen dictionary then we have found the wo numbers that add up to target 
+                return [seen[needed], i] #if we do find the needed number in seen dioctionary , we return the indeices of the two numbers that add up to target 
+            
+            seen[num] = i #if the needed number is not found in seen then we add the current number and its index to the seen 
+        
+        return [] #if no scuh pair is found we return an empty array 
+    
+
+
+
+    # key theory in this code is to use dictionary which is capable of storing the index as well as the number itself , 
+    # this allows us to check in constant time if the needed number to reach the target sum is already seen or not 

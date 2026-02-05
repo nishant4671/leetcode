@@ -1,0 +1,238 @@
+# 📘 MASTER DSA & INTERVIEW PREP SYLLABUS
+### *A Complete, Placement-Oriented Curriculum for Coding Interviews & Competitive Problem Solving*
+
+---
+
+## 📍 PHASE 0 — FOUNDATION SKILLSET (Pre-DSA)
+
+### 🧠 Logical Thinking & Problem Solving
+- Understanding *why* algorithms matter
+- Time & Space Complexity (Big-O)
+- Input/Output constraints
+- Edge case reasoning
+
+**Resources**
+- GeeksforGeeks DSA Tutorial (arrays, hashing, sorting) :contentReference[oaicite:1]{index=1}
+- LeetCode *Interview Crash Course* fundamentals :contentReference[oaicite:2]{index=2}
+
+---
+
+## 🧩 PHASE 1 — CORE DATA STRUCTURES & BASIC PROBLEMS
+
+### 📌 1. Arrays & Strings (Fundamentals)
+- Array traversal, manipulation, indexing  
+- Patterns: Two Pointers, Prefix Sum  
+- String operations & substrings
+
+**Key Concepts**
+- Two Sum, Max Subarray (Kadane), Rotate array  
+- Longest substring without repeating characters  
+- Palindromic substrings, string comparison
+
+**Practice**
+- LeetCode Arrays & Strings problems
+- Workat.tech topic practice (array/string) :contentReference[oaicite:3]{index=3}
+
+---
+
+### 📌 2. Hash Table / Sets
+- Hash maps, frequency counting
+- Membership & collision handling
+
+**Common Patterns**
+- Frequency patterns: first unique character  
+- Pair sums, anagrams, grouping patterns
+
+**Practice**
+- LeetCode hashing list
+- Top interview hashing questions :contentReference[oaicite:4]{index=4}
+
+---
+
+### 📌 3. Linked Lists
+- Singly, doubly, circular lists
+- Insert/Delete operations
+- Fast/Slow pointers (Floyd cycle detection)
+
+**Common Problems**
+- Reverse a list
+- Detect cycle
+- Merge lists
+
+**Practice**
+- LeetCode linked list topic problems
+
+---
+
+### 📌 4. Stack & Queue
+- LIFO & FIFO concepts
+- Stack for parsing and backtracking
+- Queue for BFS
+
+**Must-know**
+- Next greater element
+- Valid parentheses
+- Sliding window (queue usage)
+
+---
+
+## 🧠 PHASE 2 — ESSENTIAL ALGORITHMS
+
+### 📌 5. Sliding Window (Pattern)
+- Fixed & dynamic windows
+- Window expansion/shrink logic
+
+**Problems**
+- Minimum sub-array sum
+- Longest substring patterns
+
+**Key Skill**
+- While loops with window invariant
+
+---
+
+### 📌 6. Binary Search
+- Classic binary search
+- Search in sorted/rotated arrays
+- Boundaries & edge cases
+
+---
+
+### 📌 7. Sorting & Searching
+- Quick, merge, heap sort
+- Binary search application
+- Time/space tradeoffs
+
+---
+
+## 🌲 PHASE 3 — TREES & GRAPH THEORY
+
+### 📌 8. Binary Trees & BSTs
+- Tree traversal (inorder, preorder, postorder)
+- Balanced vs unbalanced
+- BST exploitation
+
+**Problems**
+- Level order traversal
+- Tree diameter
+- Path sums
+
+---
+
+### 📌 9. Graphs (Core)
+- BFS, DFS
+- Adjacency lists vs matrix
+- Shortest paths (Dijkstra’s)
+
+**Applications**
+- Connected components  
+- Distance from root  
+- Topological sorting
+
+---
+
+## 💥 PHASE 4 — ADVANCED PATTERNS & OPTIMIZATIONS
+
+### 📌 10. Greedy Algorithms
+- Local optimum strategies
+- Scheduling, interval problems
+
+---
+
+### 📌 11. Heaps & Priority Queues
+- Extract min/max
+- Median maintenance
+- Sliding window max
+
+---
+
+### 📌 12. Dynamic Programming (DP)
+- Memoization vs Tabulation
+- State transitions
+- Subproblem patterns
+
+**Key DP Problems**
+- Knapsack, Longest Common Subsequence
+- Fibonacci optimization
+
+---
+
+## 🧠 PHASE 5 — INTERVIEW-SPECIFIC STRATEGIES
+
+### 🧩 13. Pattern Mastery Checklist
+Follow pattern lists (Two Pointers, Sliding Window, Backtracking…)
+rather than specific problems. :contentReference[oaicite:5]{index=5}
+
+---
+
+### 📌 14. Blind 75 & GfG Top 100
+Solve curated sets of high-yield interview problems. :contentReference[oaicite:6]{index=6}
+
+---
+
+## 🏁 PHASE 6 — MOCK INTERVIEWS & FINAL REVIEW
+
+### 🧪 Daily Practice Plan
+**Weekly Split**
+- Mon: Arrays & Strings
+- Tue: Hashing & Hash Table
+- Wed: Linked List & Stack/Queue
+- Thu: Trees & Graphs
+- Fri: DP & Greedy
+- Sat: Mixed challenge / mock interview simulation
+- Sun: Review & reflection
+
+---
+
+## 🎯 CHECKPOINTS — WHAT YOU *MUST* MASTER
+
+✔ Can explain complexity for every problem  
+✔ Recognizes pattern type within 10–20 seconds  
+✔ Can translate solution to code in 10–15 minutes  
+✔ Can optimize naive → optimal solutions  
+
+---
+
+## 📌 PRACTICE PLATFORMS (Ordered by Interview Focus)
+
+🟦 **LeetCode** — best for interview coding challenges :contentReference[oaicite:7]{index=7}  
+🟧 **Workat.tech** — topic based practice :contentReference[oaicite:8]{index=8}  
+🟩 **CodeChef** — contests & structured practice :contentReference[oaicite:9]{index=9}  
+🟥 **GeeksforGeeks** — topic theory + interview lists :contentReference[oaicite:10]{index=10}  
+🟫 **TakeUForward/YouTube playlists** — concept videos + explanations :contentReference[oaicite:11]{index=11}
+
+---
+
+## 🧠 BONUS RESOURCES (Audio/Video)
+
+✔ Blind 75 Patterns video walkthrough  
+✔ YouTube mega courses on DSA (arrays, pointers, window, graphs) :contentReference[oaicite:12]{index=12}  
+✔ Community curated LeetCode resource repo :contentReference[oaicite:13]{index=13}
+
+---
+
+## 📌 CAREER & PLACEMENT TIPS
+
+📌 Master problem patterns first  
+📌 Do *mock interviews* weekly  
+📌 Review problems you solved before – don’t just move on  
+📌 Maintain a journal: problem → pattern → bug → fix
+
+---
+
+## 🟢 SUMMARY – YOUR LEARNING PROGRESSION
+
+1. Fundamental Patterns & Basic Structures  
+2. Intermediate Algorithms (Binary search, sliding window etc.)  
+3. Trees & Graphs (core SDE questions)  
+4. DP & Greedy (harder pattern class)  
+5. Mock interviews & timed practice  
+6. Curated interview problem lists  
+7. Pattern recognition mastery  
+8. Interviews & placement readiness
+
+---
+
+*This syllabus blends theory, pattern mastery, and placement-focused problem solving — guiding your DSA growth the same way a structured college curriculum does.*  
+*If you want this converted to a weekly plan with links to specific problems, tell me your current strengths and weaknesses.*
+::contentReference[oaicite:14]{index=14}
