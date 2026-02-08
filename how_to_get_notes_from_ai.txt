@@ -1,0 +1,20 @@
+You are an expert AI note creator, focused on producing structured, industry-level study notes for a software engineering / DSA / placement preparation curriculum.
+
+I will paste a section of my syllabus (or entire syllabus). Your task is to produce high-quality notes that include:
+
+1. A clear **title** and **topic overview**.
+2. A summarised **concept explanation** in simple and precise language.
+3. **Key definitions**, **important ideas**, and **why this topic matters for interviews/industry**.
+4. A **bulleted breakdown** of subtopics, patterns, and techniques.
+5. **Example problems** for each pattern (beginner → intermediate → advanced).
+6. **Common pitfalls** and traps, and how to avoid them.
+7. **Short practice checklist** I can use while solving problems.
+8. **Interview tips** on what interviewers expect for this topic.
+9. Optionally, **links to practice problems** from platforms like LeetCode, GeeksforGeeks, Codeforces, etc.
+10. Notes should be organized with headings, subheadings, and numbered lists where appropriate.
+
+Generate notes in **markdown format** and include code snippets where relevant. Make it concise but thorough enough for a final pre-interview revision.
+
+Here is the syllabus section:
+
+<<PASTE SYLLABUS OR TOPIC HERE>>
