@@ -1,0 +1,136 @@
+"""
+========================================
+BINARY SEARCH — THEORY & CORE CONCEPT
+========================================
+
+WHAT PROBLEM DOES IT SOLVE?
+---------------------------
+Binary Search is used to efficiently search for an element in a
+SORTED array or determine the position where it should be inserted.
+
+It reduces time complexity from O(n) to O(log n).
+
+----------------------------------------
+WHEN CAN YOU USE BINARY SEARCH?
+----------------------------------------
+✔ Array must be sorted
+✔ Random access available (array / list)
+✔ Problem asks for:
+   - O(log n)
+   - search / insert position
+   - first / last occurrence
+   - boundary finding
+
+----------------------------------------
+CORE IDEA
+----------------------------------------
+Instead of checking elements one-by-one,
+Binary Search repeatedly DIVIDES the search space into half.
+
+At each step:
+- Look at the middle element
+- Decide which HALF to keep
+- Discard the other half
+
+----------------------------------------
+POINTERS USED
+----------------------------------------
+left  → start of search space
+right → end of search space
+mid   → middle index
+
+----------------------------------------
+ALGORITHM WORKFLOW
+----------------------------------------
+1) Initialize:
+   left = 0
+   right = len(nums) - 1
+
+2) While left <= right:
+   - Compute mid index
+   - Compare nums[mid] with target
+
+3) Move boundaries:
+   - nums[mid] == target → FOUND
+   - nums[mid] < target  → discard left half
+   - nums[mid] > target  → discard right half
+
+4) If loop ends:
+   - target not found
+   - left pointer gives INSERT POSITION
+
+----------------------------------------
+WHY INSERT POSITION = LEFT?
+----------------------------------------
+When the loop ends:
+- All elements before 'left' are smaller than target
+- All elements after 'right' are greater than target
+- So 'left' is the correct sorted position
+
+----------------------------------------
+BINARY SEARCH TEMPLATE
+----------------------------------------
+"""
+
+def binary_search_insert_position(nums, target):
+    left = 0
+    right = len(nums) - 1
+
+    while left <= right:
+        mid = (left + right) // 2
+
+        if nums[mid] == target:
+            return mid
+        elif nums[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+
+    return left
+
+
+"""
+----------------------------------------
+TIME & SPACE COMPLEXITY
+----------------------------------------
+Time Complexity:
+- Each step halves the search space
+- Total steps ≈ log2(n)
+- Time = O(log n)
+
+Space Complexity:
+- O(1) (iterative approach)
+
+----------------------------------------
+COMMON BINARY SEARCH VARIANTS
+----------------------------------------
+1) Search Insert Position
+2) First Occurrence
+3) Last Occurrence
+4) Lower Bound
+5) Upper Bound
+6) Peak Element
+7) Rotated Sorted Array Search
+
+----------------------------------------
+COMMON MISTAKES
+----------------------------------------
+❌ Using for-loops (O(n))
+❌ Forgetting array must be sorted
+❌ Wrong mid calculation
+❌ Infinite loops due to wrong boundaries
+❌ Returning wrong pointer (left vs right)
+
+----------------------------------------
+MENTAL MODEL (REMEMBER THIS)
+----------------------------------------
+"Binary Search is not about finding —
+ it's about eliminating."
+
+If you can explain which HALF is useless,
+you can solve the problem.
+
+========================================
+END OF BINARY SEARCH THEORY
+========================================
+"""
