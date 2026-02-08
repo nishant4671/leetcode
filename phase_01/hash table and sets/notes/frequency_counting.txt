@@ -1,0 +1,317 @@
+# **Frequency Counting Notes** 📊
+
+## **What is Frequency Counting?**
+Counting **how many times** each item appears in a collection.
+
+**Simple Example:**
+```
+Input: ["apple", "banana", "apple", "orange", "banana", "apple"]
+Output: {"apple": 3, "banana": 2, "orange": 1}
+```
+
+---
+
+## **METHOD 1: The `get()` Method (Most Common)**
+
+```python
+words = ["apple", "banana", "apple", "orange", "banana", "apple"]
+freq = {}
+
+for word in words:
+    freq[word] = freq.get(word, 0) + 1
+
+print(freq)  # {'apple': 3, 'banana': 2, 'orange': 1}
+```
+
+**How it works:**
+- First "apple": `freq.get("apple", 0)` → returns 0 (not in dict yet) → `0 + 1 = 1`
+- Second "apple": `freq.get("apple", 0)` → returns 1 → `1 + 1 = 2`
+- And so on...
+
+---
+
+## **METHOD 2: Using `defaultdict`**
+
+```python
+from collections import defaultdict
+
+words = ["apple", "banana", "apple", "orange", "banana", "apple"]
+freq = defaultdict(int)  # Automatically starts at 0 for new keys
+
+for word in words:
+    freq[word] += 1  # No need for .get()!
+
+print(dict(freq))  # Convert back to regular dict if needed
+```
+
+**Pros:** Cleaner code, no .get() needed
+**Cons:** Need to import, not built-in
+
+---
+
+## **METHOD 3: Using `Counter` (Easiest!)**
+
+```python
+from collections import Counter
+
+words = ["apple", "banana", "apple", "orange", "banana", "apple"]
+freq = Counter(words)
+
+print(freq)  # Counter({'apple': 3, 'banana': 2, 'orange': 1})
+print(dict(freq))  # Convert to regular dict
+
+# Bonus: Counter has extra useful methods!
+print(freq.most_common(2))  # [('apple', 3), ('banana', 2)]
+```
+
+**Pros:** One-liner, has extra features
+**Cons:** Need to import
+
+---
+
+## **METHOD 4: Manual Check with `if-else`**
+
+```python
+words = ["apple", "banana", "apple", "orange", "banana", "apple"]
+freq = {}
+
+for word in words:
+    if word in freq:  # Check if word already exists
+        freq[word] += 1
+    else:
+        freq[word] = 1
+
+print(freq)
+```
+
+**Pros:** Very clear logic for beginners
+**Cons:** More verbose
+
+---
+
+## **REAL EXAMPLES:**
+
+### **1. Character Frequency in String**
+```python
+text = "hello world"
+char_freq = {}
+
+for char in text:
+    if char != " ":  # Skip spaces
+        char_freq[char] = char_freq.get(char, 0) + 1
+
+print(char_freq)  # {'h': 1, 'e': 1, 'l': 3, 'o': 2, 'w': 1, 'r': 1, 'd': 1}
+```
+
+### **2. Word Frequency in Sentence**
+```python
+sentence = "the cat and the dog and the mouse"
+words = sentence.split()  # Split by space
+word_freq = {}
+
+for word in words:
+    word_freq[word] = word_freq.get(word, 0) + 1
+
+print(word_freq)  # {'the': 3, 'cat': 1, 'and': 2, 'dog': 1, 'mouse': 1}
+```
+
+### **3. Number Frequency in List**
+```python
+numbers = [1, 2, 3, 1, 2, 1, 4, 5, 1]
+num_freq = {}
+
+for num in numbers:
+    num_freq[num] = num_freq.get(num, 0) + 1
+
+print(num_freq)  # {1: 4, 2: 2, 3: 1, 4: 1, 5: 1}
+```
+
+---
+
+## **COMMON PATTERNS:**
+
+### **Pattern 1: Find Most Frequent**
+```python
+words = ["apple", "banana", "apple", "orange", "banana", "apple"]
+freq = {}
+most_freq_word = None
+max_count = 0
+
+for word in words:
+    freq[word] = freq.get(word, 0) + 1
+    if freq[word] > max_count:
+        max_count = freq[word]
+        most_freq_word = word
+
+print(f"Most frequent: '{most_freq_word}' appears {max_count} times")
+```
+
+### **Pattern 2: Filter by Frequency**
+```python
+# Find words that appear more than once
+words = ["apple", "banana", "apple", "orange", "banana", "apple"]
+freq = {}
+duplicates = []
+
+for word in words:
+    freq[word] = freq.get(word, 0) + 1
+    if freq[word] == 2:  # First time we see a duplicate
+        duplicates.append(word)
+
+print(f"Duplicates: {duplicates}")  # ['apple', 'banana']
+```
+
+### **Pattern 3: Frequency of Frequencies**
+```python
+# How many words appear 1 time, 2 times, etc.?
+words = ["apple", "banana", "apple", "orange", "banana", "apple", "grape"]
+freq = {}
+freq_of_freq = {}
+
+# Step 1: Count word frequencies
+for word in words:
+    freq[word] = freq.get(word, 0) + 1
+
+# Step 2: Count how many times each frequency occurs
+for count in freq.values():
+    freq_of_freq[count] = freq_of_freq.get(count, 0) + 1
+
+print(freq_of_freq)  # {3: 1, 2: 1, 1: 2}
+# Means: 1 word appears 3 times, 1 word appears 2 times, 2 words appear 1 time
+```
+
+---
+
+## **PROBLEM-SOLVING WITH FREQUENCY COUNTING:**
+
+### **Problem 1: Check if Two Strings are Anagrams**
+```python
+def are_anagrams(s1, s2):
+    # Count characters in both strings
+    freq1 = {}
+    freq2 = {}
+    
+    for char in s1:
+        freq1[char] = freq1.get(char, 0) + 1
+    
+    for char in s2:
+        freq2[char] = freq2.get(char, 0) + 1
+    
+    # Compare frequencies
+    return freq1 == freq2
+
+print(are_anagrams("listen", "silent"))  # True
+print(are_anagrams("hello", "world"))    # False
+```
+
+### **Problem 2: Find First Non-Repeating Character**
+```python
+def first_unique_char(s):
+    freq = {}
+    
+    # Count frequencies
+    for char in s:
+        freq[char] = freq.get(char, 0) + 1
+    
+    # Find first character with frequency 1
+    for char in s:
+        if freq[char] == 1:
+            return char
+    
+    return None
+
+print(first_unique_char("leetcode"))     # 'l' (l appears once first)
+print(first_unique_char("loveleetcode")) # 'v' (v appears once first)
+```
+
+### **Problem 3: Find Common Elements in Two Lists**
+```python
+def find_common(list1, list2):
+    freq1 = {}
+    common = []
+    
+    # Count frequencies in first list
+    for item in list1:
+        freq1[item] = freq1.get(item, 0) + 1
+    
+    # Check second list
+    for item in list2:
+        if item in freq1 and freq1[item] > 0:
+            common.append(item)
+            freq1[item] -= 1  # Mark as used
+    
+    return common
+
+print(find_common([1, 2, 2, 3], [2, 2, 4]))  # [2, 2]
+print(find_common([1, 2, 3], [4, 5, 6]))     # []
+```
+
+---
+
+## **VISUALIZATION HELP:**
+
+### **Step-by-step for: ["A", "B", "A", "C", "B", "A"]**
+
+```
+Step 1: "A"
+freq = {} → freq.get("A", 0) = 0 → freq["A"] = 0 + 1 = 1
+freq = {"A": 1}
+
+Step 2: "B"
+freq = {"A": 1} → freq.get("B", 0) = 0 → freq["B"] = 0 + 1 = 1
+freq = {"A": 1, "B": 1}
+
+Step 3: "A"
+freq = {"A": 1, "B": 1} → freq.get("A", 0) = 1 → freq["A"] = 1 + 1 = 2
+freq = {"A": 2, "B": 1}
+
+Step 4: "C"
+freq.get("C", 0) = 0 → freq["C"] = 0 + 1 = 1
+freq = {"A": 2, "B": 1, "C": 1}
+
+Step 5: "B"
+freq.get("B", 0) = 1 → freq["B"] = 1 + 1 = 2
+freq = {"A": 2, "B": 2, "C": 1}
+
+Step 6: "A"
+freq.get("A", 0) = 2 → freq["A"] = 2 + 1 = 3
+freq = {"A": 3, "B": 2, "C": 1}
+```
+
+---
+
+## **MEMORY TRICK:**
+
+Think of frequency counting like taking **attendance**:
+- Each name called = increment their count
+- Final count = how many times each person was present
+
+---
+
+## **CHEAT SHEET:**
+
+```python
+# 1. Basic Pattern (MEMORIZE THIS!)
+freq = {}
+for item in items:
+    freq[item] = freq.get(item, 0) + 1
+
+# 2. Quick way with Counter
+from collections import Counter
+freq = Counter(items)
+
+# 3. For character counting
+char_freq = {}
+for char in text:
+    char_freq[char] = char_freq.get(char, 0) + 1
+
+# 4. Find max frequency
+max_item = None
+max_count = 0
+for item, count in freq.items():
+    if count > max_count:
+        max_count = count
+        max_item = item
+```
+
+**Remember:** Frequency counting is one of the **most common patterns** in coding interviews and real-world problems. Practice it until it becomes second nature! 💪

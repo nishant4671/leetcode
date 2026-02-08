@@ -1,0 +1,90 @@
+6️⃣ Common LeetCode Hashing Patterns
+🔹 Pattern 1: First Unique Character
+
+Problem:
+
+"leetcode" → 'l'
+"aabb" → -1
+
+
+Idea:
+
+Count frequency
+
+Scan again
+
+First char with freq == 1
+
+freq = {}
+for c in s:
+    freq[c] = freq.get(c, 0) + 1
+
+for i, c in enumerate(s):
+    if freq[c] == 1:
+        return i
+
+🔹 Pattern 2: Pair Sum (Two Sum)
+
+Problem:
+
+nums = [2,7,11,15], target = 9
+
+
+Idea:
+
+Store what you’ve seen
+
+Check if target - x exists
+
+seen = {}
+
+for i, x in enumerate(nums):
+    need = target - x
+    if need in seen:
+        return [seen[need], i]
+    seen[x] = i
+
+
+🧠 Mental model:
+
+“Have I seen the missing piece before?”
+
+🔹 Pattern 3: Anagrams
+
+Problem:
+
+"eat" & "tea" → True
+
+
+Idea:
+
+Same frequency = anagram
+
+from collections import Counter
+
+Counter(s) == Counter(t)
+
+
+Or manually with a hashmap.
+
+🔹 Pattern 4: Group Anagrams
+
+Input:
+
+["eat","tea","tan","ate","nat","bat"]
+
+
+Idea:
+
+Use sorted word as key
+
+groups = {}
+
+for word in strs:
+    key = "".join(sorted(word))
+    groups.setdefault(key, []).append(word)
+
+
+Output:
+
+[['eat','tea','ate'], ['tan','nat'], ['bat']]

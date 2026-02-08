@@ -1,0 +1,288 @@
+# **LeetCode Hash Strategy Guide** 🧠⚡
+
+## **1. DO I NEED FAST LOOKUP? → HASH**
+
+### **The Telltale Signs:**
+- Problem says "find quickly", "efficient search", "check if exists"
+- You catch yourself thinking: "If only I could find this in O(1) instead of O(n)..."
+- You need to repeatedly search for items
+
+### **Examples:**
+```python
+# Problem: Find if two numbers in array sum to target
+# WITHOUT Hash (O(n²)):
+def two_sum_slow(nums, target):
+    for i in range(len(nums)):
+        for j in range(i+1, len(nums)):
+            if nums[i] + nums[j] == target:
+                return [i, j]
+    return []
+
+# WITH Hash (O(n)):
+def two_sum_fast(nums, target):
+    seen = {}  # Hash map: number -> index
+    for i, num in enumerate(nums):
+        complement = target - num
+        if complement in seen:  # O(1) lookup!
+            return [seen[complement], i]
+        seen[num] = i
+    return []
+```
+
+**Mental Check:** "Am I searching for something repeatedly? Use hash!"
+
+---
+
+## **2. AM I COUNTING SOMETHING? → FREQUENCY MAP**
+
+### **The Telltale Signs:**
+- Words like "frequency", "count", "occurrence", "how many times"
+- Need to find "most common", "least common", "duplicates"
+- Comparing frequencies between two collections
+
+### **Pattern Template:**
+```python
+def frequency_pattern(data):
+    freq = {}
+    for item in data:
+        freq[item] = freq.get(item, 0) + 1
+    return freq
+```
+
+### **Examples:**
+```python
+# Problem: Find first non-repeating character
+def first_unique_char(s):
+    freq = {}
+    # Count frequencies
+    for char in s:
+        freq[char] = freq.get(char, 0) + 1
+    # Find first with count 1
+    for i, char in enumerate(s):
+        if freq[char] == 1:
+            return i
+    return -1
+
+# Problem: Check if strings are anagrams
+def is_anagram(s, t):
+    from collections import Counter
+    return Counter(s) == Counter(t)
+```
+
+**Mental Check:** "Do I need to know how many of each item? Use frequency map!"
+
+---
+
+## **3. CHECKING EXISTENCE / UNIQUENESS? → SET**
+
+### **The Telltale Signs:**
+- "All elements unique", "contains duplicates", "check if present"
+- Need to remove duplicates
+- Need to track visited nodes (graphs, matrices)
+
+### **Pattern Template:**
+```python
+def set_pattern(data):
+    seen = set()
+    result = []
+    
+    for item in data:
+        if item not in seen:  # O(1) check!
+            seen.add(item)
+            result.append(item)
+    return result
+```
+
+### **Examples:**
+```python
+# Problem: Remove duplicates from array
+def remove_duplicates(nums):
+    seen = set()
+    result = []
+    for num in nums:
+        if num not in seen:
+            seen.add(num)
+            result.append(num)
+    return result
+
+# Problem: Contains duplicate
+def has_duplicate(nums):
+    return len(set(nums)) < len(nums)  # One-liner!
+
+# Problem: Find intersection of two arrays
+def intersection(nums1, nums2):
+    return list(set(nums1) & set(nums2))
+```
+
+**Mental Check:** "Do I just need to know if something exists? Use set!"
+
+---
+
+## **4. PAIR / COMPLEMENT LOGIC? → HASH MAP**
+
+### **The Telltale Signs:**
+- Looking for pairs (a, b) where a + b = target
+- Need to map something to something else (key → value)
+- "Two-pass" problems where you store info for later
+
+### **Pattern Template:**
+```python
+def complement_pattern(items, target):
+    map = {}  # Store what we've seen
+    
+    for i, item in enumerate(items):
+        complement = target - item  # or some operation
+        if complement in map:
+            return [map[complement], i]
+        map[item] = i  # Store for future
+        
+    return []
+```
+
+### **Examples:**
+```python
+# Classic Two-Sum (already shown)
+
+# Problem: Find two movies that fit flight duration
+def find_movie_pairs(movie_lengths, flight_duration):
+    seen = set()
+    for length in movie_lengths:
+        complement = flight_duration - length
+        if complement in seen:
+            return True
+        seen.add(length)
+    return False
+
+# Problem: Roman to Integer (map symbols to values)
+def roman_to_int(s):
+    values = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 
+              'C': 100, 'D': 500, 'M': 1000}
+    total = 0
+    prev = 0
+    
+    for char in reversed(s):
+        curr = values[char]
+        if curr < prev:
+            total -= curr
+        else:
+            total += curr
+        prev = curr
+    return total
+```
+
+**Mental Check:** "Am I looking for a matching pair or complement? Use hash map!"
+
+---
+
+## **DECISION TREE FOR LEETCODE:**
+
+```
+START → Read Problem
+    ↓
+"Find something quickly?" → YES → Use HASH MAP
+    ↓ NO
+"Count frequencies?" → YES → Use FREQUENCY MAP
+    ↓ NO  
+"Check existence/duplicates?" → YES → Use SET
+    ↓ NO
+"Looking for pairs/complements?" → YES → Use HASH MAP
+    ↓ NO
+Consider other data structures (arrays, heaps, trees, etc.)
+```
+
+---
+
+## **PRACTICE PROBLEMS BY CATEGORY:**
+
+### **Fast Lookup Problems:**
+1. **Two Sum** (LeetCode #1) - Classic!
+2. **Contains Duplicate** (LeetCode #217)
+3. **Valid Anagram** (LeetCode #242)
+4. **Group Anagrams** (LeetCode #49)
+
+### **Frequency Counting Problems:**
+1. **First Unique Character** (LeetCode #387)
+2. **Sort Characters By Frequency** (LeetCode #451)
+3. **Find All Anagrams in String** (LeetCode #438)
+4. **Majority Element** (LeetCode #169)
+
+### **Set Problems:**
+1. **Intersection of Two Arrays** (LeetCode #349)
+2. **Happy Number** (LeetCode #202)
+3. **Contains Duplicate** (LeetCode #217) - Works here too!
+4. **Longest Substring Without Repeating Chars** (LeetCode #3)
+
+### **Pair/Complement Problems:**
+1. **Two Sum** (obviously)
+2. **3Sum** (LeetCode #15) - Advanced version
+3. **4Sum II** (LeetCode #454)
+4. **Max Number of K-Sum Pairs** (LeetCode #1679)
+
+---
+
+## **COMMON MISTAKES TO AVOID:**
+
+```python
+# 1. Overcomplicating with hash when array would work
+# Problem: "Find if array contains number" (small fixed range)
+# BAD: Use hash map for [1, 2, 3, ..., 100]
+# GOOD: Use boolean array of size 100
+
+# 2. Forgetting to update the hash map
+def two_sum_wrong(nums, target):
+    seen = {}
+    for i, num in enumerate(nums):
+        complement = target - num
+        if complement in seen:
+            return [seen[complement], i]
+        # Forgot: seen[num] = i ← This line missing!
+    return []
+
+# 3. Using hash when order matters
+# If problem needs ordered output, hash (unordered) might not work
+```
+
+---
+
+## **SPEED RUN DRILL:**
+
+Try solving these in 10 minutes each:
+
+**Problem 1:** Given an array, find all pairs that sum to target.
+```python
+def find_pairs(nums, target):
+    # Your code here
+```
+
+**Problem 2:** Find the most frequent word in a list.
+```python
+def most_frequent(words):
+    # Your code here
+```
+
+**Problem 3:** Check if array has all unique elements.
+```python
+def all_unique(nums):
+    # Your code here
+```
+
+---
+
+## **REMEMBER THIS MNEMONIC:**
+
+**H** → **H**ash for fast lookup  
+**A** → **A**nalyze if counting needed  
+**S** → **S**et for existence checks  
+**H** → **H**ash for pairs/complements  
+
+**Hash table is your Swiss Army knife for interviews!** 🔪
+
+---
+
+## **FINAL TIP:**
+When in doubt on LeetCode, ask yourself:
+> "Could storing visited elements help me?"
+
+If answer is YES → **Use a hash-based solution!** 🎯
+
+This mindset solves ~30% of LeetCode problems instantly!

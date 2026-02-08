@@ -1,0 +1,7 @@
+When to use SET vs MAP
+Situation	Use
+Just check existence	Set
+Need count	Hash Map
+Unique elements	Set
+Frequency / grouping	Hash Map
+
