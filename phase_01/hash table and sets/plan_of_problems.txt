@@ -1,0 +1,228 @@
+Perfect. This is a **very important phase** in your DSA journey.
+
+Since you already know:
+
+* Time complexity
+* Arrays
+* Sliding window
+* Two pointers
+* Binary search
+* Stack basics
+
+Now we build **Hashing mastery for interviews**.
+
+I’ll give you a **strict sequence**.
+Do them in this exact order.
+
+No skipping.
+
+---
+
+# 🔥 PHASE 1 — Foundations (Must Do First)
+
+These build frequency + membership thinking.
+
+---
+
+### 1️⃣ **#217 – Contains Duplicate**
+
+👉 Pure set problem
+Pattern: Membership checking
+
+---
+
+### 2️⃣ **#242 – Valid Anagram**
+
+👉 Frequency dictionary comparison
+Pattern: Character counting
+
+---
+
+### 3️⃣ **#1 – Two Sum**
+
+👉 Most important hashing problem ever
+Pattern: Complement lookup
+
+---
+
+### 4️⃣ **#383 – Ransom Note**
+
+👉 Frequency counting
+Pattern: Decrement counts safely
+
+---
+
+### 5️⃣ **#169 – Majority Element**
+
+👉 Frequency + observation
+(Also teaches better O(1) solution later)
+
+---
+
+After these 5:
+You understand basic hashing.
+
+---
+
+# 🔥 PHASE 2 — Core Interview Patterns
+
+Now we increase thinking depth.
+
+---
+
+### 6️⃣ **#49 – Group Anagrams**
+
+Pattern:
+
+* Sorting as key
+* OR character frequency as key
+
+Very important pattern.
+
+---
+
+### 7️⃣ **#347 – Top K Frequent Elements**
+
+Pattern:
+
+* Frequency map
+* Heap (later)
+* Bucket sort idea
+
+---
+
+### 8️⃣ **#36 – Valid Sudoku**
+
+Pattern:
+
+* Multiple hash sets
+* Row/Column/Box tracking
+
+Tests clean logic.
+
+---
+
+### 9️⃣ **#128 – Longest Consecutive Sequence**
+
+⚠️ VERY IMPORTANT
+
+Pattern:
+
+* Set usage
+* Sequence start detection
+
+Classic interview favorite.
+
+---
+
+# 🔥 PHASE 3 — Slightly Advanced Patterns
+
+Now we combine hashing + prefix idea.
+
+---
+
+### 🔟 **#560 – Subarray Sum Equals K**
+
+Pattern:
+
+* Prefix sum + hashmap
+  ⚠️ Extremely important.
+
+---
+
+### 1️⃣1️⃣ **#525 – Contiguous Array**
+
+Similar pattern
+Binary prefix trick.
+
+---
+
+### 1️⃣2️⃣ **#438 – Find All Anagrams in a String**
+
+Pattern:
+
+* Sliding window + frequency hashmap
+
+Very interview heavy.
+
+---
+
+# 🔥 PHASE 4 — High Value Extras (If Time Allows)
+
+---
+
+### 1️⃣3️⃣ **#3 – Longest Substring Without Repeating Characters**
+
+(Hash + sliding window)
+
+---
+
+### 1️⃣4️⃣ **#380 – Insert Delete GetRandom O(1)**
+
+Advanced hashing + design
+
+---
+
+### 1️⃣5️⃣ **#981 – Time Based Key-Value Store**
+
+Hash + binary search
+
+---
+
+# 🎯 Final Ordered List (Clean Version)
+
+Do exactly in this order:
+
+```
+217
+242
+1
+383
+169
+49
+347
+36
+128
+560
+525
+438
+3
+380
+981
+```
+
+---
+
+# 🧠 Important Strategy
+
+For each problem:
+
+1. First try brute force
+2. Then ask:
+
+   * Can I use a set?
+   * Can I store complement?
+   * Can I use frequency map?
+   * Can I convert this to prefix sum?
+
+---
+
+# ⚡ If You Want Real Interview Readiness
+
+After finishing above:
+
+Redo these without looking:
+
+* 1
+* 49
+* 128
+* 560
+
+If you can solve them from memory → You’re strong.
+
+---
+
+Now tell me:
+
+Which one are you currently solving?
+I will guide you thinking-wise (not give solution directly). 🔥

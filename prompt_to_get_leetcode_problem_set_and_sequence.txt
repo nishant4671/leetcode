@@ -1,0 +1,21 @@
+I am currently studying: [CHAPTER NAME]
+
+My current level:
+- Topics I have completed: [list them]
+- Topics I struggle with: [if any]
+- I can solve Easy / Medium / Hard (mention honestly)
+
+I want:
+
+1) A strict LeetCode problem sequence (with problem numbers)
+2) Divided into phases (Foundation → Core → Advanced)
+3) Tell me which problems are MUST-DO for interviews
+4) Mention what pattern each problem teaches
+5) Tell me when I should move to next chapter
+6) Give me 3 revision problems at the end
+
+Important:
+- Do NOT overload me
+- Keep it optimal for FAANG-level interviews
+- Sequence must be logical
+- No random list dumping
