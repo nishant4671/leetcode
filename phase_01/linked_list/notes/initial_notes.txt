@@ -1,0 +1,180 @@
+# Linked Lists
+
+## 1. Overview
+A **linked list** is a linear data structure where elements (nodes) are not stored contiguously in memory. Each node contains data and a reference (link) to the next node (and possibly the previous node). Linked lists allow efficient insertion and deletion but have O(n) access time.
+
+In interviews, linked lists test your understanding of pointers/references, edge cases, and manipulation of node links. They are a favourite topic because they require careful handling of null references and can be solved elegantly with two-pointer techniques.
+
+---
+
+## 2. Types of Linked Lists
+
+- **Singly Linked List** – Each node points to the next node only.  
+  `Node(data, next)`
+- **Doubly Linked List** – Each node has pointers to both next and previous nodes.  
+  `Node(data, next, prev)`
+- **Circular Linked List** – The last node points back to the first (or any other node), forming a loop. Can be singly or doubly linked.
+
+---
+
+## 3. Basic Operations
+
+### Node Definition (Python)
+```python
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+```
+
+### Insertion
+- **At beginning**: new node points to current head, update head.
+- **At end**: traverse to last node, point its next to new node.
+- **At given position**: traverse to position-1, adjust links.
+- **After a given node**: new node points to node.next, node points to new node.
+
+### Deletion
+- **From beginning**: move head to head.next.
+- **From end**: traverse to second last node, set its next to None.
+- **By value**: keep prev pointer while traversing; when found, set prev.next = curr.next.
+
+### Traversal
+```python
+def traverse(head):
+    curr = head
+    while curr:
+        print(curr.val)
+        curr = curr.next
+```
+
+---
+
+## 4. Important Techniques and Patterns
+
+### 🔹 Dummy (Sentinel) Node
+- A temporary node placed before the head to simplify edge cases (e.g., when head itself may be deleted or modified).
+- Use `dummy = ListNode(0); dummy.next = head`.
+
+### 🔹 Two Pointers (Slow & Fast)
+- **Fast moves 2 steps, slow moves 1 step**. Used for:
+  - Finding middle node (when fast reaches end, slow is middle).
+  - Detecting cycles (if fast meets slow, cycle exists).
+  - Finding k-th node from end (fast moves k steps ahead, then both move together).
+
+### 🔹 Reversing a Linked List
+- **Iterative**: maintain prev, curr, nextTemp.
+- **Recursive**: reverse rest, then adjust.
+
+### 🔹 Merging Lists
+- Use a dummy node to build the result.
+- Compare heads of two sorted lists, attach smaller one, advance.
+
+### 🔹 Cycle Detection (Floyd’s Algorithm)
+- Detect cycle: slow and fast meet.
+- Find cycle start: after meeting, reset slow to head; move both one step; meeting point is cycle start.
+
+### 🔹 Palindrome Check
+- Find middle (slow/fast), reverse second half, compare with first half.
+
+### 🔹 Intersection Point of Two Lists
+- Calculate lengths; align starts; move together until they meet (or null).
+
+---
+
+## 5. Common Problems with Examples
+
+| Pattern                | Beginner                                 | Intermediate                                      | Advanced                                      |
+| ---------------------- | ---------------------------------------- | ------------------------------------------------- | --------------------------------------------- |
+| **Reverse**            | [Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/) | [Reverse Nodes in k-Group](https://leetcode.com/problems/reverse-nodes-in-k-group/) | [Reverse Linked List II](https://leetcode.com/problems/reverse-linked-list-ii/) |
+| **Fast & Slow**        | [Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list/) | [Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii/) | [Reorder List](https://leetcode.com/problems/reorder-list/) |
+| **Merge**              | [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/) | [Merge k Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/) | [Sort List](https://leetcode.com/problems/sort-list/) |
+| **Cycle Detection**    | [Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/) | [Find the Duplicate Number](https://leetcode.com/problems/find-the-duplicate-number/) (array as linked list) | [Cycle in a Circular Array](https://leetcode.com/problems/circular-array-loop/) |
+| **Palindrome / Intersection** | [Palindrome Linked List](https://leetcode.com/problems/palindrome-linked-list/) | [Intersection of Two Linked Lists](https://leetcode.com/problems/intersection-of-two-linked-lists/) | [Add Two Numbers II](https://leetcode.com/problems/add-two-numbers-ii/) |
+
+### Example: Reverse a Linked List (Iterative)
+```python
+def reverseList(head):
+    prev = None
+    curr = head
+    while curr:
+        next_temp = curr.next
+        curr.next = prev
+        prev = curr
+        curr = next_temp
+    return prev
+```
+
+### Example: Detect Cycle
+```python
+def hasCycle(head):
+    slow = fast = head
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+        if slow == fast:
+            return True
+    return False
+```
+
+---
+
+## 6. Common Pitfalls & How to Avoid Them
+
+| Pitfall                                   | Solution                                                                 |
+| ----------------------------------------- | ------------------------------------------------------------------------ |
+| **Dereferencing null (None) pointer**     | Always check `if node:` before accessing `node.next` or `node.val`.     |
+| **Losing reference to head**               | Use a temporary variable when modifying links. Keep a `dummy` if needed. |
+| **Infinite loops in cycle problems**       | Ensure fast moves two steps and slow one; stop when fast reaches end.    |
+| **Not handling empty list or single node** | Write code that gracefully handles `head is None` or `head.next is None`. |
+| **Forgetting to update tail in doubly list**| Always update both `next` and `prev` pointers.                           |
+| **Off-by-one in position-based operations**| Draw diagrams to visualise links before coding.                          |
+
+---
+
+## 7. Short Practice Checklist
+
+- [ ] Reverse a linked list (iterative & recursive).
+- [ ] Detect cycle in a linked list.
+- [ ] Find the start of the cycle.
+- [ ] Find middle node.
+- [ ] Remove nth node from end.
+- [ ] Merge two sorted lists.
+- [ ] Check if a list is palindrome.
+- [ ] Find intersection point of two lists.
+- [ ] Add two numbers represented as linked lists.
+- [ ] Flatten a multilevel doubly linked list.
+- [ ] Copy list with random pointer.
+- [ ] Rotate list to the right by k places.
+
+---
+
+## 8. Interview Tips
+
+- **Draw diagrams** – Before writing code, sketch the list and the link changes.
+- **Clarify assumptions** – Singly or doubly? Can we modify the list? Should we return new head?
+- **Edge cases first** – Empty list, single node, two nodes, cycle present.
+- **Use dummy nodes** – They simplify insertion/deletion at head.
+- **Test with examples** – Run through small cases mentally.
+- **Name pointers meaningfully** – `prev`, `curr`, `next`, `slow`, `fast`.
+- **Be comfortable with recursion** – Some problems (reverse, merge) have elegant recursive solutions.
+
+---
+
+## 9. Practice Problems (Links)
+
+- [LeetCode Linked List Tag](https://leetcode.com/tag/linked-list/)
+- [GeeksforGeeks Linked List](https://www.geeksforgeeks.org/data-structures/linked-list/)
+- [HackerRank Linked Lists](https://www.hackerrank.com/domains/data-structures?filters%5Bsubdomains%5D%5B%5D=linked-lists)
+
+**Must Do:**
+- [Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/)
+- [Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/)
+- [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/)
+- [Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/)
+- [Add Two Numbers](https://leetcode.com/problems/add-two-numbers/)
+- [Copy List with Random Pointer](https://leetcode.com/problems/copy-list-with-random-pointer/)
+- [LRU Cache](https://leetcode.com/problems/lru-cache/) (uses doubly linked list)
+
+---
+
+Happy coding! Remember: linked lists are all about pointer manipulation – practice until it becomes second nature.
